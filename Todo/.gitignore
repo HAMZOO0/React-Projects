@@ -1,0 +1,33 @@
+Revert "add web page Router project"
+
+This reverts commit 530e3ba3253eca89de4fd1ea7a46d3bb75cc89b4.
+
+# Please enter the commit message for your changes. Lines starting
+# with '#' will be ignored, and an empty message aborts the commit.
+#
+# On branch master
+# Changes to be committed:
+#       deleted:    .gitignore
+#       deleted:    Router/README.md
+#       deleted:    Router/eslint.config.js
+#       deleted:    Router/index.html
+#       deleted:    Router/package-lock.json
+#       deleted:    Router/package.json
+#       deleted:    Router/postcss.config.js
+#       deleted:    Router/public/vite.svg
+#       deleted:    Router/src/Layout.jsx
+#       deleted:    Router/src/components/About/About.jsx
+#       deleted:    Router/src/components/Contact/Contact.jsx
+#       deleted:    Router/src/components/Footer/Footer.jsx
+#       deleted:    Router/src/components/Github/Github.jsx
+#       deleted:    Router/src/components/Header/Header.jsx
+#       deleted:    Router/src/components/Home/Home.jsx
+#       deleted:    Router/src/components/Login/Login.jsx
+#       deleted:    Router/src/index.css
+#       deleted:    Router/src/main.jsx
+#       deleted:    Router/tailwind.config.js
+#       deleted:    Router/vite.config.js
+#
+# Untracked files:
+.git/COMMIT_EDITMSG [unix] (22:42 24/08/2024)                                               1,1 Top
+"/f/Web Dev/React JS/web page Route/.git/COMMIT_EDITMSG" [unix] 33L, 1145B                        m
