@@ -32,5 +32,20 @@ export const bookmarkSlice = createSlice({
         (bookmark) => bookmark.id !== action.payload
       );
     },
+    updateBookmark: (state, action) => {
+      state.map((bookmark) => {
+        if (bookmark.id === action.payload.id) {
+          bookmark.title = action.payload.title;
+          bookmark.url = action.payload.url;
+        }
+      });
+    },
   },
 });
+
+export const { addBookmark, removeBookmark, updateBookmark } =
+  bookmarkSlice.actions;
+
+export default bookmarkSlice.reducer;
+
+// createSlice: This is a function from @reduxjs/toolkit that helps you create a slice of the Redux store. A "slice" is just a part of the store that handles related data and actions (e.g., managing bookmarks).
