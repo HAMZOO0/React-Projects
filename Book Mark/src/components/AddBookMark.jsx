@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useDispatch } from "react-redux";
-import { addBookmark } from "../features/BookMark/bookmarkSlice";
+import { addBookmark } from "../features/bookMarkSlice";
 function Addbookmark() {
   const [Title, setTitle] = useState("");
   const [Url, setUrl] = useState("");
@@ -11,7 +11,6 @@ function Addbookmark() {
 
     // here we access reducer
     dispatch(addBookmark({ title: Title, url: Url }));
-
     // reset form
     setTitle("");
     setUrl("");
@@ -22,7 +21,7 @@ function Addbookmark() {
       className="flex"
       onSubmit={add}
       //   value={todoContent}
-      onChange={(e) => setBookmarkContent(e.target.value)}
+      // onChange={(e) => setBookmarkContent(e.target.value)}
     >
       <input
         value={Title}
@@ -47,3 +46,5 @@ function Addbookmark() {
     </form>
   );
 }
+
+export default Addbookmark;

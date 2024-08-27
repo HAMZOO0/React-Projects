@@ -1,68 +1,36 @@
-import React, { useState } from "react";
-import { useTodo } from "../context/TodoContext";
+import React from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { updateBookmark, removeBookmark } from "../features/bookMarkSlice";
 
-function TodoItem({ todo }) {
-  const { toggleTodo, deleteTodo, updateTodo } = useTodo();
+function BookmarkList() {
+  const bookmarks = useSelector((state) => state.bookmark);
+  const dispatch = useDispatch();
 
-  // use for editable
-  const [isTodoEditable, setIsTodoEditable] = useState(false);
-
-  const [todoMsg, setTodoMsg] = useState(todo.todoContent); // Ensure initial value is an empty string if undefined
-
-  // here we are updating the todo
-  const editTodo = () => {
-    updateTodo(todo.id, { ...todo, content: todoMsg });
-    setIsTodoEditable(false);
-  };
-
-  const toggleCompleted = () => {
-    toggleTodo(todo.id);
-  };
+  console.log("bookmarks", bookmarks);
 
   return (
-    <div
-      className={`flex border border-black/10 rounded-lg px-3 py-1.5 gap-x-3 shadow-sm shadow-white/50 duration-300  text-black ${
-        todo.check ? "bg-[#1f3f54]" : "bg-[#70b69cb4]"
-      }`}
-    >
-      <input
-        type="checkbox"
-        className="cursor-pointer"
-        checked={todo.check}
-        onChange={toggleCompleted}
-      />
-      <input
-        type="text"
-        className={`border outline-none w-full bg-transparent rounded-lg ${
-          isTodoEditable ? "border-black/10 px-2" : "border-transparent"
-        } ${todo.check ? "line-through" : ""}`}
-        value={todoMsg}
-        onChange={(e) => setTodoMsg(e.target.value)}
-        readOnly={!isTodoEditable}
-      />
-      {/* Edit, Save Button */}
-      <button
-        className="inline-flex w-8 h-8 rounded-lg text-sm border border-black/10 justify-center items-center bg-gray-50 hover:bg-gray-100 shrink-0 disabled:opacity-50"
-        onClick={() => {
-          if (todo.check) return;
-
-          if (isTodoEditable) {
-            editTodo();
-          } else setIsTodoEditable((prev) => !prev);
-        }}
-        disabled={todo.check}
-      >
-        {isTodoEditable ? "📁" : "✏️"}
-      </button>
-      {/* Delete Todo Button */}
-      <button
-        className="inline-flex w-8 h-8 rounded-lg text-sm border border-black/10 justify-center items-center bg-gray-50 hover:bg-gray-100 shrink-0"
-        onClick={() => deleteTodo(todo.id)}
-      >
-        ❌
-      </button>
+    <div className="flex border border-black/10 rounded-lg px-3 py-1.5 gap-x-3 shadow-sm shadow-white/50 duration-300  text-black  bg-[#1f3f54]">
+      <h1 className="text-3xl">Bookmark</h1>
+      <ul>
+        {bookmarks && bookmarks.length > 0 ? (
+          bookmarks.map((bookmark) => (
+            <li key={bookmark.id}>
+              <div>{bookmark.title}</div>
+              <div>{bookmark.url}</div>
+              <button
+                className="inline-flex w-8 h-8 rounded-lg text-sm border border-black/10 justify-center items-center bg-gray-50 hover:bg-gray-100 shrink-0"
+                onClick={() => dispatch(removeBookmark(bookmark.id))}
+              >
+                ❌
+              </button>
+            </li>
+          ))
+        ) : (
+          <p>No bookmarks available</p>
+        )}
+      </ul>
     </div>
   );
 }
 
-export default TodoItem;
+export default BookmarkList;

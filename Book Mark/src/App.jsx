@@ -1,14 +1,12 @@
-import { useState } from "react";
-import reactLogo from "./assets/react.svg";
-import viteLogo from "/vite.svg";
 import "./App.css";
+import BookmarkList from "./components/Bookmark_list.jsx";
+import AddBookMark from "./components/AddBookMark.jsx";
 
 function App() {
-  const [count, setCount] = useState(0);
-
   return (
     <>
-      <h1>hii </h1>
+      <AddBookMark />
+      <BookmarkList />
     </>
   );
 }
